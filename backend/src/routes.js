@@ -1,10 +1,10 @@
 import {Router} from 'express';
+import TaskController from './app/controllers/TaskController';
 
 const routes = new Router();
 
-routes.get('/',(req, res) => {
-    return res.json('Funcionando a rota')
-});
-
+//tasks
+routes.get('/tasks',TaskController.index);
+routes.post('/tasks',TaskController.store);
 
 export default routes;
