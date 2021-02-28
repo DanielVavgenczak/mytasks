@@ -1,9 +1,13 @@
 import Sequelize from 'sequelize';
 import dbConfig from '../config/database';
 import Task from '../app/models/Task';
+import User from '../app/models/User';
+import Avatar from '../app/models/Avatar';
 
 const models = [
-  Task
+  User,
+  Task,
+  Avatar
 ];
 
 class Database {
@@ -12,7 +16,8 @@ class Database {
   }
   conect() {
     this.connection = new Sequelize(dbConfig);
-    models.map(model =>model.init(this.connection));
+    models.map(model => model.init(this.connection))
+          .map(model => model.associate && model.associate(this.connection.models))
   }
 }
 
