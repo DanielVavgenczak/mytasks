@@ -22,6 +22,6 @@ routes.post('/auth', AuthController.store);
 routes.post("/avatar", middlewareAuth, multerUpload.single('file'), AvatarController.store);
 //tasks
 routes.get('/tasks',middlewareAuth, TaskController.index);
-routes.post('/tasks',middlewareAuth,TaskController.store);
+routes.post('/tasks',multerUpload.single('cover'), middlewareAuth,TaskController.store);
 
 export default routes;

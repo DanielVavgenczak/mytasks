@@ -18,6 +18,7 @@ class Task extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, {foreignKey: 'user_id'});
+    this.hasOne(models.Cover, {foreignKey: 'task_id'});
   }
 }
 
